@@ -967,7 +967,7 @@
                                     <div class="pt-3 sm:pt-5 lg:pt-0">
                                         <h2 class="text-xl font-semibold text-black dark:text-white">TIGO</h2>
                                         <p class="mt-4 text-sm/relaxed">
-                                            Aplicación Devops Dummy para pruebas del equipo devops mesa SAMI
+                                            Aplicación Devops Dummy para pruebas del equipo devops mesa S@MI
                                         </p>
                                     </div>
                                 </div>
@@ -998,14 +998,15 @@
                                                     document.getElementById('resultado-api').innerHTML = 'Intentando consultar...';
 
                                                     // Usa fetch como alternativa
-                                                    fetch('/consultar-rick-and-morty')
+                                                    fetch('/consultar-devops-dummy')
                                                         .then(response => {
                                                             console.log('Respuesta recibida');
                                                             return response.json();
                                                         })
                                                         .then(data => {
                                                             console.log('Datos:', data);
-                                                            document.getElementById('resultado-api').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                                                            //document.getElementById('resultado-api').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                                                            document.getElementById('resultado-api').innerText = data.mensaje;
                                                         })
                                                         .catch(error => {
                                                             console.error('Error:', error);
