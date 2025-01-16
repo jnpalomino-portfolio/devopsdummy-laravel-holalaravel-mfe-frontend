@@ -22,11 +22,31 @@ WORKDIR /app/frontend
 # Copiar archivos del proyecto
 COPY . .
 
+# RUN chown -R 0 /app/frontend/storage /app/frontend/bootstrap/cache
+
+# RUN chmod -R 775 /app/frontend/storage /app/frontend/bootstrap/cache
+
+# RUN chmod u=g /app/frontend/storage /app/frontend/bootstrap/cache
+
+# Establece un usuario no root para el contenedor
+# RUN chown -R www-data:www-data /app/frontend/storage /app/frontend/bootstrap/cache
+# RUN chmod -R 775 /app/frontend/storage /app/frontend/bootstrap/cache
+RUN chgrp -R 0 /usr
+
+RUN chmod -R g=u /usr
+# RUN chmod -R 777 /app
+
+# Crear el archivo de base de datos SQLite
+# RUN mkdir -p /app/frontend/database && touch /app/frontend/database/database.sqlite && \
+#     chmod -R 775 /app/frontend/database
+
+# USER www-data
+
 # Instalar dependencias
 RUN composer install --no-dev --optimize-autoloader
 
 # Permisos para almacenamiento y caché
-RUN chown -R www-data:www-data /app/frontend/storage /app/frontend/bootstrap/cache
+# RUN chown -R www-data:www-data /app/frontend/storage /app/frontend/bootstrap/cache
 
 # Exponer el puerto 8009
 EXPOSE 8009
