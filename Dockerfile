@@ -26,8 +26,10 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 COPY . .
 
 # Configurar permisos
-RUN chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+# RUN chown -R www-data:www-data storage bootstrap/cache \
+#    && chmod -R 775 storage bootstrap/cache
+RUN chgrp -R 0 /app
+RUN chmod -R g=u /app
 
 EXPOSE 8009
 
