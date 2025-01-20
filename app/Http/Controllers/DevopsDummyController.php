@@ -9,7 +9,7 @@ class DevopsDummyController extends Controller
     public function consultarApiDevops()
     {
         try {
-            $response = Http::get('http://backend-laravel:8008/mensaje/');
+            $response = Http::get('http://devopsdummyholalaravelms.apps.preprodalcaldia.medellin.gov.co/mensaje/');
             return response()->json($response->json());
         } catch (\Exception $e) {
             return response()->json([
