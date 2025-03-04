@@ -19,11 +19,11 @@ WORKDIR /app/frontend
 # Copiar solo los archivos necesarios primero
 COPY composer.json composer.lock ./
 
-# Instalar dependencias de producción
-RUN composer install --no-dev --optimize-autoloader --no-scripts
-
 # Copiar el resto de la aplicación
 COPY . .
+
+# Instalar dependencias de producción
+RUN composer install --no-dev --optimize-autoloader
 
 # Configurar permisos
 # RUN chown -R www-data:www-data storage bootstrap/cache \
